@@ -1,0 +1,28 @@
+services:
+    container-a:
+      image: container-a
+      
+      stdin_open: true
+      tty: true
+
+    container-b:
+      
+      build:
+        context: ./
+        dockerfile: Dockerfile.containerB
+      
+      ports:
+        - "5000:5000"     
+      tty: true
+      stdin_open: true   
+
+    container_scrape:
+      build:
+          context: ./
+          dockerfile: Dockerfile.container_scrape
+      ports:
+        - "7777:7777"     
+      tty: true
+      stdin_open: true    
+
+ 
