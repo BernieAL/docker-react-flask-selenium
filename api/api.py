@@ -15,14 +15,14 @@ app = Flask(__name__)
 
 
 def get_db_connection():
-    conn = psycopg2.connect(host='localhost',
+    conn = psycopg2.connect(host='pgsql',
                             database='test',
                             user=os.environ['DB_USERNAME'],
                             password=os.environ['DB_PASSWORD'])
     return conn
 
 
-@app.route('/')
+@app.route('/api')
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
