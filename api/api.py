@@ -15,10 +15,7 @@ app = Flask(__name__)
 
 
 def get_db_connection():
-    conn = psycopg2.connect(host='pgsql',
-                            database='test',
-                            user=os.environ['DB_USERNAME'],
-                            password=os.environ['DB_PASSWORD'])
+    conn = psycopg2.connect(os.environ['DB_URI'])
     return conn
 
 

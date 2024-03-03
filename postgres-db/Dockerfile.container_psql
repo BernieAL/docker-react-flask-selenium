@@ -1,0 +1,8 @@
+FROM postgres
+
+WORKDIR /app
+ENV POSTGRES_DB test
+ENV POSTGRES_USER admin
+ENV POSTGRES_PASSWORD admin
+COPY *.sql /docker-entrypoint-initdb.d/
+

@@ -1,0 +1,12 @@
+docker commands:
+	docker run -d --name container_b --network my-network container_b
+	docker run -d --name pgsql --network my-network postgres
+
+
+	docker run --name container_b -it -p 7777:7777 --network my-network container_b 
+		can access container b using host machine browser -> localhost:7777/api
+			successfully connnected to postgresql but issue finding books table in db
+			TRY: copy over init.db script into container_b dockerfile, build and run container_b, then
+				enter container_b and run the init.db script to see if it executes the action
+				but first, init.db must be modified to include postgres container name in uri
+

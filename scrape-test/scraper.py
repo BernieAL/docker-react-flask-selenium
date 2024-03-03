@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def scrape_func():
 	
 	output_file = "output.csv" #relative path
-	result = {"success":False, "message":""}
+	success_result = False
 
 	logger.info("starting scrape_func")
 
@@ -36,19 +36,17 @@ def scrape_func():
 				file.write(line + '\n')
 
 		#if eveything successful
-		result["success"]=True
-		result["message"]="scraping and file writing completed successfully"
+		success_result = True
 		logger.info("scraping and file writing completed successfully")
 	
 	except:
-		result["message"]=f"Error Occurred: {str(e)}"
 		logger.error(f"Error Occured {str(e)}")
 
 	finally:
 		# time.sleep(10)
 		driver.quit()
 
-	return result
+	return success_result
 
 
 if __name__ == '__main__':
