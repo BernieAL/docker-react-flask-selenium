@@ -6,4 +6,8 @@ RUN pip install -r ./requirements.txt
 
 EXPOSE 7777
 # CMD ["flask", "run"]
-CMD ["gunicorn","--config", "gunicorn_conf.py","api:app"]
+# CMD ["gunicorn","--config", "gunicorn_conf.py","api:app"]
+
+#set entry point to a custom script
+Copy cont_B_entrypoint.sh /cont_B_entrypoint.sh
+ENTRYPOINT ["/cont_B_entrypoint.sh"]

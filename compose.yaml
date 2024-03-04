@@ -1,28 +1,56 @@
-services:
-    container-a:
-      image: container-a
-      
-      stdin_open: true
-      tty: true
 
-    container-b:
-      
+version: '3.8'
+services:
+    container_a:
       build:
         context: ./
-        dockerfile: Dockerfile.containerB
-      
-      ports:
-        - "5000:5000"     
+        dockerfile: Dockerfile.containerA
+      networks:
+        - my-network
+      stdin_open: true
       tty: true
-      stdin_open: true   
+    
+    nginx:
+      image: Dockerfile.container_nginx
+      build: 
+          context: .
+          dockerfile: Dockerfile.container_nginx
+      networks:
+        - my-network
 
-    container_scrape:
-      build:
-          context: ./
-          dockerfile: Dockerfile.container_scrape
+    postgres:
+      build: 
+        context: ./postgres-db
+        dockerfile: Dockerfile.container_psql
+      networks:
+        - my-network
+
+    container_b:
+      build: 
+        conext: ./
+        dockerfile: Dockerfile.containerB
+      networks:
+        - my-network
       ports:
         - "7777:7777"     
       tty: true
-      stdin_open: true    
+      stdin_open: true   
+
+  networks:
+      my-network: {}
+
+
+
+
+
+
+    # container_scrape:
+    #   build:
+    #       context: ./
+    #       dockerfile: Dockerfile.container_scrape
+    #   ports:
+    #     - "7777:7777"     
+    #   tty: true
+    #   stdin_open: true    
 
  
