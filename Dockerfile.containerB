@@ -1,7 +1,7 @@
 FROM python:3.9
 WORKDIR /app
 
-COPY api/requirements.txt api/api.py api/.flaskenv api/.env api/gunicorn_conf.py api/init.db ./ 
+COPY api/requirements.txt api/api.py api/.flaskenv api/.env api/gunicorn_conf.py ./ 
 RUN pip install -r ./requirements.txt
 
 EXPOSE 7777
@@ -10,4 +10,6 @@ EXPOSE 7777
 
 #set entry point to a custom script
 Copy cont_B_entrypoint.sh /cont_B_entrypoint.sh
+RUN chmod +x /cont_B_entrypoint.sh
 ENTRYPOINT ["/cont_B_entrypoint.sh"]
+

@@ -1,7 +1,8 @@
-
 version: '3.8'
 services:
     container_a:
+      hostname: container_a
+      container_name: container_a
       build:
         context: ./
         dockerfile: Dockerfile.containerA
@@ -11,23 +12,28 @@ services:
       tty: true
     
     nginx:
-      image: Dockerfile.container_nginx
+      hostname: nginx
+      container_name: nginx
       build: 
-          context: .
+          context: ./
           dockerfile: Dockerfile.container_nginx
       networks:
         - my-network
 
     postgres:
+      hostname: pgsql
+      container_name: pgsql
       build: 
         context: ./postgres-db
         dockerfile: Dockerfile.container_psql
       networks:
         - my-network
 
-    container_b:
+    container_b: 
+      
+      container_name: container_b
       build: 
-        conext: ./
+        context: ./
         dockerfile: Dockerfile.containerB
       networks:
         - my-network
@@ -36,7 +42,7 @@ services:
       tty: true
       stdin_open: true   
 
-  networks:
+networks:
       my-network: {}
 
 

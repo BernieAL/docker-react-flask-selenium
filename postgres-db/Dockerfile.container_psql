@@ -6,3 +6,11 @@ ENV POSTGRES_USER admin
 ENV POSTGRES_PASSWORD admin
 COPY *.sql /docker-entrypoint-initdb.d/
 
+CMD ["postgres"]
+
+
+#set entry point to a custom script
+#Copy cont_PG_entrypoint.sh /cont_PG_entrypoint.sh
+#RUN chmod +x /cont_PG_entrypoint.sh
+#ENTRYPOINT ["/cont_PG_entrypoint.sh"]
+
