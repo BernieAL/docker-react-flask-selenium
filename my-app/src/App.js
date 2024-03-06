@@ -10,10 +10,11 @@ export default function App() {
     const formData = new FormData(event.target);
     const query = formData.get("query");
     console.log(query)
-    // fetch ('https://nginx/api')
-    // .then(response => response.json())
-    // .then(data => console.log(data))
-    // .then(error => console.error('Error',error))
+
+    fetch ('/api')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .then(error => console.error('Error',error))
   }
 
   return (

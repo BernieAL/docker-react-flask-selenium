@@ -26,6 +26,8 @@ services:
       build: 
           context: ./
           dockerfile: Dockerfile.container_react_nginx
+      ports:
+        - "3000:80"
       networks:
         - my-network
 
@@ -39,7 +41,6 @@ services:
         - my-network
 
     container_b: 
-      
       container_name: container_b
       build: 
         context: ./
