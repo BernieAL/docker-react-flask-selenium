@@ -11,12 +11,21 @@ services:
       stdin_open: true
       tty: true
     
+    # nginx:
+    #   hostname: nginx
+    #   container_name: nginx
+    #   build: 
+    #       context: ./
+    #       dockerfile: Dockerfile.container_nginx
+    #   networks:
+    #     - my-network
+
     nginx:
       hostname: nginx
       container_name: nginx
       build: 
           context: ./
-          dockerfile: Dockerfile.container_nginx
+          dockerfile: Dockerfile.container_react_nginx
       networks:
         - my-network
 
